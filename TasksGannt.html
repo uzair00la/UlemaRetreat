@@ -3,62 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>Full Screen Embed with Button</title>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
         .iframe-container {
-            width: 100%;  /* Adjust as needed */
-            height: 90vh; /* Adjust as needed */
+            width: 100%;
+            height: 80vh;
             overflow: hidden;
             position: relative;
-            margin: 0 auto;
-            border: 1px solid #ddd; /* Optional border */
+            border: none;
         }
 
         .iframe-container iframe {
             width: 100%;
             height: 100%;
             border: none;
-            transform-origin: 0 0; /* Scale from the top-left corner */
-            transition: transform 0.2s ease; /* Smooth zoom transition */
         }
 
-        .controls {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .zoom-slider {
-            width: 100%;
-            max-width: 500px; /* Adjust max-width as needed */
-            margin: 0 auto;
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My GitHub Page</h1>
-    <!-- Container for the iframe -->
-    <div class="iframe-container">
-        <iframe id="myIframe" 
-            src="https://onedrive.live.com/embed?resid=CBB706D28B68022B%2113599&authkey=%21AEoWPv2wvc_J4Gk&em=2&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&wdzoom=55">
-        </iframe>
-    </div>
-    <!-- Zoom controls -->
-    <div class="controls">
-        <label for="zoom">Zoom: </label>
-        <input type="range" id="zoom" class="zoom-slider" min="0.5" max="2" step="0.1" value="1">
-        <span id="zoomValue">100%</span>
+    <div class="iframe-container" id="iframeContainer">
+        <iframe src="https://onedrive.live.com/embed?resid=CBB706D28B68022B%2113599&authkey=%21AEoWPv2wvc_J4Gk&em=2&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
+        <button class="fullscreen-btn" onclick="toggleFullScreen()">Full Screen</button>
     </div>
 
     <script>
-        const iframe = document.getElementById('myIframe');
-        const zoomSlider = document.getElementById('zoom');
-        const zoomValue = document.getElementById('zoomValue');
-
-        zoomSlider.addEventListener('input', function() {
-            const scale = this.value;
-            iframe.style.transform = `scale(${scale})`;
-            zoomValue.textContent = `${Math.round(scale * 100)}%`;
-        });
+        function toggleFullScreen() {
+            const container = document.getElementById('iframeContainer');
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                container.requestFullscreen();
+            }
+        }
     </script>
 </body>
 </html>
