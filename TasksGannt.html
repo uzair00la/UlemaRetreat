@@ -4,12 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My GitHub Page</title>
+    <style>
+        /* CSS to control iframe size and zoom */
+        .iframe-container {
+            width: 90%;  /* Adjust width as needed */
+            height: 70vh; /* Adjust height as needed */
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto; /* Center the iframe */
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to My GitHub Page</h1>
-    <!-- Your embed code goes here -->
-   <iframe width="1200" height="700" frameborder="0" scrolling="no" 
-src="https://onedrive.live.com/embed?resid=CBB706D28B68022B%2113599&authkey=%21AEoWPv2wvc_J4Gk&em=2&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True">
-</iframe>
+    <!-- Container for the iframe -->
+    <div class="iframe-container">
+        <iframe 
+            src="https://onedrive.live.com/embed?resid=CBB706D28B68022B%2113599&authkey=%21AEoWPv2wvc_J4Gk&em=2&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True">
+        </iframe>
+    </div>
 </body>
 </html>
