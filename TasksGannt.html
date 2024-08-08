@@ -11,7 +11,6 @@
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
         }
-
         .iframe-container {
             width: 100%;
             height: 80vh;
@@ -19,13 +18,11 @@
             position: relative;
             border: none;
         }
-
         .iframe-container iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-
         .fullscreen-btn {
             position: absolute;
             top: 10px;
@@ -38,7 +35,6 @@
             cursor: pointer;
             z-index: 1000;
         }
-
         /* Timer Overlay */
         .timer-overlay {
             position: fixed;
@@ -53,7 +49,6 @@
             text-align: center;
             z-index: 1000;
         }
-
         .timer-overlay span {
             font-weight: bold;
             color: #ffcc00;
@@ -62,14 +57,13 @@
 </head>
 <body>
     <div class="iframe-container" id="iframeContainer">
-        <iframe src="https://onedrive.live.com/embed?resid=CBB706D28B68022B%2113599&authkey=%21AEoWPv2wvc_J4Gk&em=2&wdAllowInteractivity=False&Item=GanntSpace&wdHideGridlines=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True""></iframe>
+        <iframe src="https://onedrive.live.com/embed?resid=CBB706D28B68022B%2113599&authkey=%21AEoWPv2wvc_J4Gk&em=2&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
         <button class="fullscreen-btn" onclick="toggleFullScreen()">Full Screen</button>
         <!-- Timer Overlay -->
         <div class="timer-overlay">
             Time Remaining: <span id="timer"></span>
         </div>
     </div>
-
     <script>
         function toggleFullScreen() {
             const container = document.getElementById('iframeContainer');
@@ -79,20 +73,18 @@
                 container.requestFullscreen();
             }
         }
-
         // Set the deadline date and time
         var deadline = new Date("2024-10-04T00:00:00").getTime();
-
         // Update the countdown every 1 second
         var x = setInterval(function() {
             // Get today's date and time
             var now = new Date().getTime();
-
             // Find the time remaining
             var timeRemaining = deadline - now;
 
             // Time calculations for days, hours, minutes and seconds
             var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 
             var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
