@@ -8,6 +8,11 @@
             margin: 0;
             padding: 0;
             height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
 
         .iframe-container {
@@ -34,19 +39,27 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            z-index: 1000;
         }
 
         /* Timer Overlay */
         .timer-overlay {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 18px;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 24px;
+            text-align: center;
             z-index: 1000;
+        }
+
+        .timer-overlay span {
+            font-weight: bold;
+            color: #ffcc00;
         }
     </style>
 </head>
@@ -82,11 +95,13 @@
             var timeRemaining = deadline - now;
 
             // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
             // Display the result in the element with id="timer"
-            document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
             // If the countdown is finished, write some text
             if (timeRemaining < 0) {
