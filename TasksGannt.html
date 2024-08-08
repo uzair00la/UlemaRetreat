@@ -8,9 +8,6 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
         }
@@ -44,8 +41,8 @@
 
         /* Timer Overlay */
         .timer-overlay {
-            position: absolute;
-            top: 20px;
+            position: fixed;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.7);
@@ -96,19 +93,4 @@
 
             // Time calculations for days, hours, minutes and seconds
             var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-            // Display the result in the element with id="timer"
-            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-            // If the countdown is finished, write some text
-            if (timeRemaining < 0) {
-                clearInterval(x);
-                document.getElementById("timer").innerHTML = "EXPIRED";
-            }
-        }, 1000);
-    </script>
-</body>
-</html>
+            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 
